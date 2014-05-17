@@ -48,15 +48,15 @@ public class UserServiceImpl extends CrudServiceImpl<User, Long> implements User
 		repo.saveAndFlush(user);
 
 		log.info(String.format("User %s created.", user.getEmail()));
-	};
+	}
 
 	@Override
 	public void createNewLoan(User user, Loan loan) throws ApplicationLogicException {
 		checkLoanRequest(user, loan);
 		user.addLoan(loan);
-				
+
 		repo.saveAndFlush(user);
-		
+
 		log.info(String.format("Loan for user %s created.", user.getEmail()));
 	}
 

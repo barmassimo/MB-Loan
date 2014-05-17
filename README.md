@@ -18,12 +18,30 @@ Copyright (C) 2014, [Massimo Barbieri](http://www.massimobarbieri.it)
 
 ## Environment
 
-Spring Boot
-Tomcat 
-PostgreSQL or HSQLDB
-Maven
+* Java 7
+* Spring Boot
+* Tomcat 
+* PostgreSQL or HSQLDB
+* Maven
 
-## API examples
+## Application usage
+
+1. Install Java 7 and Maven.
+1. Download and unzip, or clone the project. 
+1. Test the project:
+    ```
+    mvn test
+    ```
+1. Run the project - on http://localhost:8080/ by default:
+    ```
+    mvn spring-boot:run
+    ```
+1. Create a WAR file:
+    ```
+    mvn package
+    ```
+
+## API usage
 
 ### Register as a new User
 
