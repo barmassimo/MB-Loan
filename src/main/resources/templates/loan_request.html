@@ -1,0 +1,30 @@
+<html layout:decorator="_base">
+
+<th:block layout:fragment="title">Apply for a loan</th:block>
+
+<th:block layout:fragment="content" th:inline="text">
+<p>
+    <form action="#" th:action="@{/secure/loan_request}" th:object="${loan}" method="POST">
+            <table class="table">
+                <tr>
+                    <td>Amount:</td>
+                    <td><input type="number" th:field="*{amount}" /></td>
+                    <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></td>
+                </tr>   
+                <tr>
+                    <td>Duration - weeks:</td>
+                    <td><input type="number" th:field="*{duration}" /></td>
+                    <td th:if="${#fields.hasErrors('duration')}" th:errors="*{duration}"></td>
+                </tr>                   
+                <tr>
+                    <td><button type="submit" class="btn btn-primary">Submit</button></td>
+                    <td />
+                    <td />
+                </tr>
+            </table>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    </form>
+</p>
+</th:block>
+
+</html>

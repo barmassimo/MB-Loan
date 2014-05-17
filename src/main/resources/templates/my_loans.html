@@ -1,0 +1,46 @@
+<html layout:decorator="_base">
+
+<th:block layout:fragment="title">My loans</th:block>
+
+<th:block layout:fragment="content" th:inline="text">
+
+    <table th:if="${not #arrays.isEmpty(user.loans)}" class="table">
+    <thead>
+        <tr>
+            <th>date</th>
+            <th>duration (weeks)</th>
+            <th>amount</th>
+            <th>interest</th>
+            <th>extensions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="loan : ${user.loans}">
+            <td>[[${loan.creationDate}]]</td>
+            <td>[[${loan.duration}]]</td>
+            <td>[[${loan.amount}]]</td>
+            <td>[[${loan.interest}]]</td>
+            <td>
+                <ul>
+                    <li th:each="loanExtension : ${loan.loanExtensions}">
+                        [[${loanExtension.creationDate}]]
+                    </li>
+                    
+                    <form action="#" th:action="@{/secure/loan_extension_request}" method="POST">
+                        <input type="hidden"  name="id" th:value="${loan.id}" />
+                        <button type="submit" class="btn btn-small">Extend</button>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                    </form>                    
+                    
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+
+    <p th:if="${#arrays.isEmpty(user.loans)}">You don't have any loan.</p>
+    
+    <a th:href="@{/secure/loan_request}" class="btn btn-primary btn-large">Apply for a loan</a>
+</th:block>
+
+</html>

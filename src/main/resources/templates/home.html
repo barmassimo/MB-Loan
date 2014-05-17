@@ -1,0 +1,48 @@
+<html layout:decorator="_base">
+
+<th:block layout:fragment="title">Welcome to MB Loan, a Spring Framework demonstration.</th:block>
+
+<th:block layout:fragment="content">
+<div class="jumbotron">
+Please register to apply for a loan
+<p>
+    <form action="#" th:action="@{/}" th:object="${user}" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                    <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></td>
+                </tr>
+                <tr>
+                    <td>Surname:</td>
+                    <td><input type="text" th:field="*{surname}" /></td>
+                    <td th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" th:field="*{email}" /></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+                </tr>  
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" th:field="*{password}" /></td>
+                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+                </tr>                  
+                <tr>
+                    <td><button type="submit" class="btn btn-primary btn-lage">Submit</button></td>
+                </tr>
+            </table>
+            
+    </form>
+</p>
+
+<p>
+Already registered? <a th:href="@{/secure/login}" class="btn btn-primary">Log in!</a>
+</p>
+<p>
+
+</p>
+</div>
+</th:block>
+
+</html>

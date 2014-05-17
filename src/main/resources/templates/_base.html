@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>MB Loan</title>
+    <link href="/favicon.ico" rel="icon" />
+    <link href="/favicon.ico" rel="shortcut icon" />
+    
+    <link href="../static/res/bootstrap/css/bootstrap.min.css" th:href="@{/res/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+    <link href="../static/res/bootstrap/css/bootstrap-theme.min.css" th:href="@{/res/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" />
+    <link href="../static/res/bootstrap/css/datepicker.css" th:href="@{/res/bootstrap/css/datepicker.css}" rel="stylesheet" />
+    <link href="../static/res/css/main.css" th:href="@{/res/css/main.css}" rel="stylesheet" />
+    <th:block layout:fragment="extra_head" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" th:href="@{/}">MB Loan</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                        <li><a th:href="@{/secure/my_loans}">My loans</a></li>
+                        <li><a th:href="@{/secure/loan_request}">New loan</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+      <h2><th:block layout:fragment="title">MB Loan</th:block></h2>
+        <p class="alert alert-success" th:if="${normalMessage}" th:text="${normalMessage}">a message</p>
+        <p class="alert alert-warning" th:if="${warningMessage}" th:text="${warningMessage}">a warning message</p>
+        <p>
+            <th:block layout:fragment="content">Page content</th:block>
+        </p>
+    </div>
+
+
+<script src="../static/res/js/jQuery/jquery-2.0.3.min.js" th:src="@{/res/js/jQuery/jquery-2.0.3.min.js}"></script>
+<script src="../static/res/bootstrap/js/bootstrap.min.js" th:src="@{/res/bootstrap/js/bootstrap.min.js}"></script>
+<script src="../static/res/bootstrap/js/bootstrap-datepicker.js" th:src="@{/res/bootstrap/js/bootstrap-datepicker.js}"></script>
+<th:block layout:fragment="extra_script" />
+</body>
+</html>
