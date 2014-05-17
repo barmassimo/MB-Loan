@@ -34,17 +34,7 @@ curl -X POST -H "Content-Type:application/json" -H "Accept:application/json" htt
 
 response:
 ```
-{
-    "status": "success",
-    "objectId": 5,
-    "errorMessage": "",
-    "links": [
-        {
-            "rel": "loans",
-            "href": "http://localhost:8080/api/loans"
-        }
-    ]
-}
+{"status": "success","objectId": 5,"errorMessage": "","links": [{"rel": "loans","href": "http://localhost:8080/api/loans"}]}
 ```
 
 ### Apply for a Loan
