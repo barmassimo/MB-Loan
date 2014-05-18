@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import it.massimobarbieri.mbloan.Application;
 import it.massimobarbieri.mbloan.domain.Loan;
+import it.massimobarbieri.mbloan.domain.LoanExtension;
 import it.massimobarbieri.mbloan.domain.User;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -39,6 +40,26 @@ public class UserRepositoryTest {
 
 		users.saveAndFlush(user);
 		users.saveAndFlush(user2);
+	}
+	
+	@Test
+	public void deleteCascade() {
+
+		User user = getTestUser();
+		Loan loan = getTestLoan();
+		
+		user.addLoan(loan);
+		
+		loan.extend(new LoanExtension());
+		
+		users.saveAndFlush(user);
+		
+		assertThat(users.findAll().size(), is(1)); 
+		
+		users.delete(user);
+		
+		assertThat(users.findAll().size(), is(0)); 
+		
 	}
 
 	@Test
